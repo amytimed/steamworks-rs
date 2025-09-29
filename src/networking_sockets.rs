@@ -533,14 +533,14 @@ impl<Manager> Drop for InnerSocket<Manager> {
 }
 
 pub struct NetConnection<Manager> {
-    pub(crate) handle: sys::HSteamNetConnection,
-    sockets: *mut sys::ISteamNetworkingSockets,
-    inner: Arc<Inner<Manager>>,
-    socket: Option<Arc<InnerSocket<Manager>>>,
-    _callback_handle: Option<Arc<CallbackHandle<Manager>>>,
-    _event_receiver: Option<Receiver<()>>,
-    message_buffer: Vec<*mut SteamNetworkingMessage_t>,
-    is_handled: bool,
+    pub handle: sys::HSteamNetConnection,
+    pub sockets: *mut sys::ISteamNetworkingSockets,
+    pub inner: Arc<Inner<Manager>>,
+    pub socket: Option<Arc<InnerSocket<Manager>>>,
+    pub _callback_handle: Option<Arc<CallbackHandle<Manager>>>,
+    pub _event_receiver: Option<Receiver<()>>,
+    pub message_buffer: Vec<*mut SteamNetworkingMessage_t>,
+    pub is_handled: bool,
 }
 
 unsafe impl<Manager: Send + Sync> Send for NetConnection<Manager> {}
