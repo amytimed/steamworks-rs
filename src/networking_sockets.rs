@@ -528,14 +528,14 @@ impl Drop for InnerSocket {
 }
 
 pub struct NetConnection {
-    pub(crate) handle: sys::HSteamNetConnection,
-    sockets: *mut sys::ISteamNetworkingSockets,
-    inner: Arc<Inner>,
-    socket: Option<Arc<InnerSocket>>,
-    _callback_handle: Option<Arc<CallbackHandle>>,
-    _event_receiver: Option<Receiver<()>>,
-    message_buffer: Vec<*mut SteamNetworkingMessage_t>,
-    is_handled: bool,
+    pub handle: sys::HSteamNetConnection,
+    pub sockets: *mut sys::ISteamNetworkingSockets,
+    pub inner: Arc<Inner>,
+    pub socket: Option<Arc<InnerSocket>>,
+    pub _callback_handle: Option<Arc<CallbackHandle>>,
+    pub _event_receiver: Option<Receiver<()>>,
+    pub message_buffer: Vec<*mut SteamNetworkingMessage_t>,
+    pub is_handled: bool,
 }
 
 unsafe impl Send for NetConnection {}
